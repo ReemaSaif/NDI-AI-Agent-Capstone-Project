@@ -3,6 +3,7 @@
 
 ## **Project Title:** 
 **NDI-Sentinel: The Autonomous Governance & Sync Agent** 
+
 AI-Powered Autonomous Data Governance and NDI Compliance System 
 
 ## **Problem Statement:** 
