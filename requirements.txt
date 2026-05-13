@@ -1,0 +1,8 @@
+easyocr
+opencv-python
+pandas
+streamlit
+pillow
+pypdf
+openpyxl
+python-docx
