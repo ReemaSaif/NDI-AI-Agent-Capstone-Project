@@ -6,3 +6,5 @@ pillow
 pypdf
 openpyxl
 python-docx
+psycopg2-binary
+python-dotenv
