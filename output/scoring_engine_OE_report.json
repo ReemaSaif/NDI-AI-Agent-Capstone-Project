@@ -1,0 +1,99 @@
+{
+    "entity_name": "Ministry of Health",
+    "cycle_name": "Third Measurement Cycle",
+    "final_score": 2.85,
+    "generated_at": "2026-05-16T18:42:07.331034+00:00",
+    "metrics": [
+        {
+            "metric_id": "DSI.OE.01",
+            "percentage": 84.0,
+            "scale": 3,
+            "weight": 0.05,
+            "weighted_score": 0.15
+        },
+        {
+            "metric_id": "DSI.OE.02",
+            "percentage": 50.0,
+            "scale": 1,
+            "weight": 0.2,
+            "weighted_score": 0.2
+        },
+        {
+            "metric_id": "DO.OE.03",
+            "percentage": 88,
+            "scale": 3,
+            "weight": 0.05,
+            "weighted_score": 0.15
+        },
+        {
+            "metric_id": "DQ.OE.02",
+            "percentage": 79,
+            "scale": 3,
+            "weight": 0.05,
+            "weighted_score": 0.15
+        },
+        {
+            "metric_id": "DO.OE.02",
+            "percentage": 91,
+            "scale": 4,
+            "weight": 0.1,
+            "weighted_score": 0.4
+        },
+        {
+            "metric_id": "RMD.OE.01",
+            "percentage": 80.0,
+            "scale": 3,
+            "weight": 0.1,
+            "weighted_score": 0.3
+        },
+        {
+            "metric_id": "OD.OE.01",
+            "percentage": 83.33,
+            "scale": 3,
+            "weight": 0.15,
+            "weighted_score": 0.45
+        },
+        {
+            "metric_id": "OD.OE.05",
+            "percentage": 100.0,
+            "scale": 5,
+            "weight": 0.05,
+            "weighted_score": 0.25
+        },
+        {
+            "metric_id": "MCM.OE.01",
+            "percentage": 75.0,
+            "scale": 3,
+            "weight": 0.05,
+            "weighted_score": 0.15
+        },
+        {
+            "metric_id": "MCM.OE.02",
+            "percentage": 75.0,
+            "scale": 3,
+            "weight": 0.05,
+            "weighted_score": 0.15
+        },
+        {
+            "metric_id": "MCM.OE.03",
+            "percentage": 83.33,
+            "scale": 3,
+            "weight": 0.05,
+            "weighted_score": 0.15
+        },
+        {
+            "metric_id": "DSI.OE.05",
+            "percentage": 90.0,
+            "scale": 4,
+            "weight": 0.05,
+            "weighted_score": 0.2
+        },
+        {
+            "metric_id": "DQ.OE.03",
+            "percentage": 87.5,
+            "scale": 3,
+            "weight": 0.05,
+            "weighted_score": 0.15
+        }
+    ]
+}
