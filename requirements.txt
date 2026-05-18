@@ -8,3 +8,9 @@ openpyxl
 python-docx
 psycopg2-binary
 python-dotenv
+reportlab
+arabic-reshaper
+python-bidi
+matplotlib
+requests
+
