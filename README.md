@@ -35,3 +35,96 @@ The problem mainly affects:
   
 The project aims to automate governance monitoring and provide continuous visibility into 
 organizational compliance and NDI maturity.
+
+
+# How to Run the NDI‑AI‑Agent Capstone Project
+Follow the steps below to set up the environment, run the dashboard, and generate the final PDF report.
+
+#### **1- Clone the Repository:**
+Download the project to your machine:
+```
+git clone https://github.com/ReemaSaif/NDI-AI-Agent-Capstone-Project.git
+cd NDI-AI-Agent-Capstone-Project
+```
+#### **2- Create & Activate a Virtual Environment:**
+This keeps dependencies clean and isolated.
+**On Windows:**
+```
+python -m venv venv
+venv\Scripts\activate
+```
+
+**On Mac/Linux:**
+```
+python3 -m venv venv
+source venv/bin/activate
+```
+
+#### **3- Install Project Dependencies:**
+Make sure your virtual environment is active, then run:
+
+```
+pip install -r requirements.txt
+
+```
+If you are using UV:
+
+```
+uv pip install -r requirements.txt
+
+```
+
+#### **4- Configure Environment Variables (Required to run the agent):**
+If any agent requires API keys, create a .env file in the project root and put:
+```
+OPENAI_API_KEY=your_api_key_here
+```
+
+##### How to Get Your `OPENAI_API_KEY`
+
+- Go to the OpenAI dashboard:  
+   https://platform.openai.com/login
+
+- Sign in with your OpenAI account.
+
+- Click -**“Create new secret key”**.
+
+- Copy the generated API key.
+
+- Create a `.env` file in the project root and add:
+```
+OPENAI_API_KEY=your_api_key_here
+```
+
+- Save the file — your project will now load the key automatically.
+
+**Important Note:**  
+Your API key is generated only once. Make sure to copy the key and save it in the .env file immediately, because you will not be able to view it again after it is created.
+
+#### **5- Run the Dashboard (NDI Scoring Dashboard):**
+This launches the main dashboard interface.
+* Navigate to the dashboard folder:
+```
+cd dashboard
+```
+* Run the dashboard:
+```
+python app.py
+```
+
+#### **6- Generate the PDF Report (Reporting Engine):**
+This creates the final Arabic PDF report using the scoring output.
+Navigate to the reporting folder:
+```
+cd reporting
+```
+Run the report generator:
+
+```
+python run_report.py
+```
+The generated PDF will appear as:
+
+```
+OE_Arabic_Report.pdf
+```
