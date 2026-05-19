@@ -1,8 +1,10 @@
 # NDI-AI-Agent-Capstone-Project
 
 ## **Team Members:**
-1- Tasneem Almutairi (AI Governance & RAG Systems Engineer)
-2- Reema Almutawa (Data Systems, Evaluation & Reporting Engineer)
+1- Tasneem Almutairi (AI Governance & RAG Systems Engineer).
+
+2- Reema Almutawa (Data Systems, Evaluation & Reporting Engineer).
+
 3- Ibtihal Alfayez (Computer Vision & UI Engineer)
 
 ## **Project Title:** 
