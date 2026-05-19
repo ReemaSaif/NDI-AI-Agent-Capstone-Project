@@ -16,6 +16,9 @@ REPORTS_DIR = ROOT_DIR / "reports"
 SCORING_DIR = ROOT_DIR / "scoring"
 ADVISOR_DIR = ROOT_DIR / "Strategic Advisor"
 ADVISOR_OUTPUTS_DIR = ADVISOR_DIR / "Outputs"
+FINAL_PROJECT_DIR = ROOT_DIR / "final" / "project"
+FINAL_VIOLATIONS_REPORT = FINAL_PROJECT_DIR / "NDI_Sentinel_Final_Report.pdf"
+FINAL_RECOMMENDATIONS_TXT = FINAL_PROJECT_DIR / "strategic_advisory_output.txt"
 
 for directory in [UPLOADS_DIR, OUTPUTS_DIR, OUTPUT_DIR, REPORTS_DIR]:
     directory.mkdir(exist_ok=True)
@@ -822,7 +825,7 @@ def all_text_reports() -> list[Path]:
         "policy_recommendations.txt", "final_recommendations.txt",
     ]
     files: list[Path] = []
-    for directory in [ADVISOR_OUTPUTS_DIR, ADVISOR_DIR, OUTPUTS_DIR, OUTPUT_DIR, REPORTS_DIR]:
+    for directory in [FINAL_PROJECT_DIR, ADVISOR_OUTPUTS_DIR, ADVISOR_DIR, OUTPUTS_DIR, OUTPUT_DIR, REPORTS_DIR]:
         if directory.exists():
             files.extend([directory / name for name in names if (directory / name).exists()])
             for pattern in ["*recommend*.txt", "*recommend*.md", "*advisor*.txt", "*rag*.txt", "*policy*.txt", "*strategic*.txt"]:
@@ -839,12 +842,23 @@ def all_text_reports() -> list[Path]:
 
 
 def latest_pdf_report() -> Path | None:
+    if FINAL_VIOLATIONS_REPORT.exists():
+        return FINAL_VIOLATIONS_REPORT
     files = []
-    for directory in [OUTPUTS_DIR, OUTPUT_DIR, REPORTS_DIR, SCORING_DIR, ROOT_DIR]:
+    for directory in [FINAL_PROJECT_DIR, OUTPUTS_DIR, OUTPUT_DIR, REPORTS_DIR, SCORING_DIR, ROOT_DIR]:
         if directory.exists():
             files.extend(directory.glob("*.pdf"))
     files = sorted(files, key=lambda p: p.stat().st_mtime, reverse=True)
     return files[0] if files else None
+
+
+def recommendations_txt_report() -> Path | None:
+    if FINAL_RECOMMENDATIONS_TXT.exists():
+        return FINAL_RECOMMENDATIONS_TXT
+    for path in all_text_reports():
+        if path.exists():
+            return path
+    return None
 
 
 def latest_json_report() -> Path | None:
@@ -924,6 +938,14 @@ def extract_recommendations_from_json(data: dict) -> list[Any]:
 
 
 def find_recommendations() -> tuple[list[Any], Path | None, str]:
+    if FINAL_RECOMMENDATIONS_TXT.exists():
+        try:
+            text = FINAL_RECOMMENDATIONS_TXT.read_text(encoding="utf-8").strip()
+            if text and not any(bad in text for bad in ["Error:", "Execution Failure", "Traceback"]):
+                return [text], FINAL_RECOMMENDATIONS_TXT, "txt"
+        except Exception:
+            pass
+
     for path in all_json_files():
         data = read_json(path)
         if isinstance(data, dict):
@@ -1369,15 +1391,34 @@ def render_file_details(output: dict, item: dict) -> None:
 
 def render_reports_section() -> None:
     pdf = latest_pdf_report()
+    txt = recommendations_txt_report()
     now = datetime.now().strftime("%Y-%m-%d %H:%M")
     rows = [
-        {"نوع التقرير": "تقرير النضج والامتثال PDF", "الحالة": status_html("متوفر", "green") if pdf else status_html("غير متوفر", "amber"), "آخر تحديث": esc(datetime.fromtimestamp(pdf.stat().st_mtime).strftime("%Y-%m-%d %H:%M") if pdf else now), "الإجراء": "تحميل التقرير" if pdf else "غير متاح"},
+        {
+            "نوع التقرير": "تقرير الانتهاكات PDF",
+            "الحالة": status_html("متوفر", "green") if pdf else status_html("غير متوفر", "amber"),
+            "آخر تحديث": esc(datetime.fromtimestamp(pdf.stat().st_mtime).strftime("%Y-%m-%d %H:%M") if pdf else now),
+            "الإجراء": "تحميل التقرير" if pdf else "غير متاح",
+        },
+        {
+            "نوع التقرير": "ملف التوصيات TXT",
+            "الحالة": status_html("متوفر", "green") if txt else status_html("غير متوفر", "amber"),
+            "آخر تحديث": esc(datetime.fromtimestamp(txt.stat().st_mtime).strftime("%Y-%m-%d %H:%M") if txt else now),
+            "الإجراء": "تحميل التوصيات" if txt else "غير متاح",
+        },
     ]
     st.markdown('<div class="plain-section-title">التقارير والمخرجات</div>', unsafe_allow_html=True)
     render_html_table(rows)
-    if pdf:
-        with open(pdf, "rb") as f:
-            st.download_button("تحميل تقرير PDF", data=f, file_name=pdf.name, mime="application/pdf", use_container_width=True)
+
+    col1, col2 = st.columns(2)
+    with col1:
+        if pdf:
+            with open(pdf, "rb") as f:
+                st.download_button("تحميل تقرير الانتهاكات PDF", data=f, file_name=pdf.name, mime="application/pdf", use_container_width=True)
+    with col2:
+        if txt:
+            with open(txt, "rb") as f:
+                st.download_button("تحميل ملف التوصيات TXT", data=f, file_name=txt.name, mime="text/plain", use_container_width=True)
 
 
 def render_home() -> None:
