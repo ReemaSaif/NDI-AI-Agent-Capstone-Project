@@ -1,5 +1,9 @@
 # NDI-AI-Agent-Capstone-Project
 
+## **Team Members:**
+* Tasneem Almutairi (AI Governance & RAG Systems Engineer)
+* Reema Almutawa (Data Systems, Evaluation & Reporting Engineer)
+* Ibtihal Alfayez (Computer Vision & UI Engineer)
 
 ## **Project Title:** 
 **NDI-Sentinel: The Autonomous Governance & Sync Agent** 
