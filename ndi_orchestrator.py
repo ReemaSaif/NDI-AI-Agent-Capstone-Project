@@ -5,11 +5,19 @@ from langgraph.graph import StateGraph, END
 
 # 1. الاستيرادات
 from RAG.Retrieval.query_agent import NDISentinelRetriever
-from Strategic_Advisor.advisor_agent import AdvisorAgent 
 from scoring.scoring_engine import evaluate_oe
 from reporting.pdf_builder import OEReportBuilder
 from reporting.layouts import OESummary, MetricItem
 from reporting.font import register_fonts
+import sys
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parent
+ADVISOR_DIR = ROOT_DIR / "Strategic Advisor"
+
+sys.path.append(str(ADVISOR_DIR))
+
+from advisor_agent import AdvisorAgent
 
 # 2. تعريف الحالة (State)
 class AgentState(TypedDict):

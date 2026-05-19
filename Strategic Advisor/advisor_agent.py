@@ -1,6 +1,14 @@
 import os
-import requests
+import sys
 import json
+import requests
+from pathlib import Path
+
+ROOT_DIR = Path(__file__).resolve().parents[1]
+RETRIEVAL_DIR = ROOT_DIR / "RAG" / "Retrieval"
+
+sys.path.append(str(RETRIEVAL_DIR))
+
 from query_agent import NDISentinelRetriever
 
 class AdvisorAgent:
@@ -70,8 +78,11 @@ class AdvisorAgent:
             return f"Technical Error: {str(e)}"
 
 if __name__ == "__main__":
-    # Key configuration
-    MY_KEY="xxxxxxxxxxxxxxxxx"
+    MY_KEY = os.getenv("OPENROUTER_API_KEY")
+
+    if not MY_KEY:
+        raise ValueError("OPENROUTER_API_KEY is missing.")
+
     advisor = AdvisorAgent(api_key=MY_KEY)
     execution_status = advisor.generate_strategic_recommendation()
     print(execution_status)

@@ -1,11 +1,26 @@
-
 import os
+import sys
+from pathlib import Path
 from datetime import datetime
-from reportlab.platypus import (SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, PageBreak, Image)
+
+CURRENT_DIR = Path(__file__).resolve().parent
+sys.path.append(str(CURRENT_DIR))
+
+from reportlab.platypus import (
+    SimpleDocTemplate,
+    Paragraph,
+    Spacer,
+    Table,
+    TableStyle,
+    PageBreak,
+    Image,
+)
+
 from reportlab.platypus.flowables import HRFlowable
 from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
 from reportlab.lib.pagesizes import A4
 from reportlab.lib import colors
+
 from layouts import fix_arabic, generate_metrics_chart, OESummary
 
 class OEReportBuilder:
