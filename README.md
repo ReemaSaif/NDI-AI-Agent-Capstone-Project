@@ -115,6 +115,7 @@ python app.py
 
 #### **6- Generate the PDF Report (Reporting Engine):**
 This creates the final Arabic PDF report using the scoring output.
+
 Navigate to the reporting folder:
 ```
 cd reporting
