@@ -48,6 +48,7 @@ cd NDI-AI-Agent-Capstone-Project
 ```
 #### **2- Create & Activate a Virtual Environment:**
 This keeps dependencies clean and isolated.
+
 **On Windows:**
 ```
 python -m venv venv
@@ -65,13 +66,11 @@ Make sure your virtual environment is active, then run:
 
 ```
 pip install -r requirements.txt
-
 ```
 If you are using UV:
 
 ```
 uv pip install -r requirements.txt
-
 ```
 
 #### **4- Configure Environment Variables (Required to run the agent):**
@@ -80,7 +79,7 @@ If any agent requires API keys, create a .env file in the project root and put:
 OPENAI_API_KEY=your_api_key_here
 ```
 
-##### How to Get Your `OPENAI_API_KEY`
+**How to Get Your `OPENAI_API_KEY`:**
 
 - Go to the OpenAI dashboard:  
    https://platform.openai.com/login
@@ -98,8 +97,10 @@ OPENAI_API_KEY=your_api_key_here
 
 - Save the file — your project will now load the key automatically.
 
+
 **Important Note:**  
 Your API key is generated only once. Make sure to copy the key and save it in the .env file immediately, because you will not be able to view it again after it is created.
+
 
 #### **5- Run the Dashboard (NDI Scoring Dashboard):**
 This launches the main dashboard interface.
