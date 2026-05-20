@@ -1,7 +1,8 @@
 # Applied AI Bootcamp Capstone Project - SDAIA
 
-## **Project Name:** 
-معيار
+# NDI-AI-Agent-Capstone-Project
+
+## **Project Name:**  معيار
 
 ## **Team Members:**
 1- Tasneem Almutairi (AI Governance & RAG Systems Engineer).
