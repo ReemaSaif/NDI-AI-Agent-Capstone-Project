@@ -1,6 +1,7 @@
 # Applied AI Bootcamp Capstone Project - SDAIA
 
-# NDI-AI-Agent-Capstone-Project
+## NDI-AI-Agent-Capstone-Project
+
 
 ## **Project Name:**  معيار
 
