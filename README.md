@@ -1,4 +1,4 @@
-# NDI-AI-Agent-Capstone-Project
+# NDI-AI-Agent-Capstone-Project (معيار)
 
 ## **Team Members:**
 1- Tasneem Almutairi (AI Governance & RAG Systems Engineer).
